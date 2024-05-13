@@ -6,9 +6,9 @@ import org.springframework.stereotype.Repository;
 
 import com.test.restapi.entity.Student;
 
-/**
-* Repository interface for Student entity.
-*/
+
+// Repository interface for Student entity.
+
 @Repository
 public interface StudentRepo extends JpaRepository<Student, Long> {
 

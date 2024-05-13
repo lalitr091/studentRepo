@@ -2,7 +2,6 @@ package com.test.restapi.entity;
 
 import java.time.LocalDate;
 
-import org.springframework.data.annotation.Id;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -11,6 +10,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -18,7 +18,7 @@ import lombok.Data;
 @Entity
 @Table(name = "STUDENT")
 public class Student {
-    @jakarta.persistence.Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
  

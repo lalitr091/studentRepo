@@ -49,8 +49,11 @@ public class StudentService {
     }
  
     // update student
-    public Student updateStudent(Long id, Student updatedStudent) {
-        Optional<Student> existingStudent = studentRepo.findById(id);
+    public Student updateStudent(Student updatedStudent) {
+        if( updatedStudent.getId()==null){
+            return studentRepo.save(updatedStudent);
+        } else {
+        Optional<Student> existingStudent = studentRepo.findById(updatedStudent.getId());
         if (existingStudent.isPresent()) {
             Student student = existingStudent.get();
             student.setName(updatedStudent.getName());
@@ -59,8 +62,9 @@ public class StudentService {
             student.setStudentClass(updatedStudent.getStudentClass());
             return studentRepo.save(student);
         } else {
-            throw new RuntimeException("Student not found");
+            throw new RuntimeException("Student not found with id: "+ updatedStudent.getId());
         }
+    }
     }
  
 }

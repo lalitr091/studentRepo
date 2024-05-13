@@ -9,8 +9,11 @@ import org.springframework.stereotype.Service;
 import com.test.restapi.entity.Student;
 import com.test.restapi.repository.StudentRepo;
 
+import lombok.extern.slf4j.Slf4j;
+
 
 @Service
+@Slf4j
 public class StudentService {
      private final StudentRepo studentRepo;
  
@@ -51,6 +54,7 @@ public class StudentService {
     // update student
     public Student updateStudent(Student updatedStudent) {
         if( updatedStudent.getId()==null){
+            log.info("id not found in the body saving as new student");
             return studentRepo.save(updatedStudent);
         } else {
         Optional<Student> existingStudent = studentRepo.findById(updatedStudent.getId());
